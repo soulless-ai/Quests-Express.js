@@ -2,13 +2,13 @@ import pool from '../db/database.js';
 
 // Create (создать новый элемент)
 export const createGame = async (req, res) => {
-  const { shortName, fullName, translations } = req.body;
+  const { shortName, translations } = req.body;
   try {
     const result = await pool.query(`
       INSERT INTO games 
-      (shortName, fullName, translations) 
-      VALUES ($1, $2, $3) RETURNING *`,
-      [shortName, fullName, translations]);
+      (shortName, translations) 
+      VALUES ($1, $2) RETURNING *`,
+      [shortName, translations]);
     res.status(201).send(result.rows[0]);
   } catch (error) {
     res.status(400).send(error);
