@@ -1,20 +1,20 @@
 import express from 'express';
 import cors from 'cors';
-import { json } from 'body-parser';
-import admins from './routes/admins.js'; // Импортируем маршруты
-import games from './routes/games.js'; // Импортируем маршруты
-import history from './routes/history.js'; // Импортируем маршруты
-import resources from './routes/resources.js'; // Импортируем маршруты
+import bodyParser from 'body-parser';
+import admins from './routes/admins.js';
+import games from './routes/games.js';
+import history from './routes/history.js';
+import resources from './routes/resources.js';
 
 const app = express();
 const port = process.env.PORT || 10000;
 
 // Middleware
 app.use(cors());
-app.use(json());
+app.use(bodyParser.json());
 
 // Подключаем маршруты
-app.use('/api', admins); // Все маршруты начинаются с /api
+app.use('/api', admins);
 app.use('/api', games);
 app.use('/api', history);
 app.use('/api', resources);
