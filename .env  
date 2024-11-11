@@ -1,0 +1,6 @@
+PORT=10000
+DB_USER=database_rfny_user
+DB_HOST=dpg-csoq3chu0jms738nvc8g-a.oregon-postgres.render.com
+DB_DATABASE=database_rfny
+DB_PASSWORD=MhE2pqlrEHQDpl3rhkSiLg5W6lHIQFI6
+DB_PORT=5432

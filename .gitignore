@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+
+# npm package-lock file
+package-lock.json
+
+# Build directory
+/dist
+
+# IDE specific files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Temporary files
+*.tmp
+*.swp
+
+# Yarn files (если используете Yarn)
+yarn-error.log
