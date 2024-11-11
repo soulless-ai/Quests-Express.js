@@ -1,4 +1,6 @@
-import { Pool } from 'pg';
+import pkg from 'pg'; // Импортируйте модуль как default
+const { Pool } = pkg;  // Теперь извлекаем Pool из импортированного объекта
+
 import dotenv from 'dotenv';
 
 // Загружаем переменные из .env
