@@ -2,7 +2,6 @@ import pool from '../db/database.js';
 
 // Create (создать новый элемент)
 export const createGame = async (req, res) => {
-  console.log(req.body)
   const { shortName, translations } = req.body;
   try {
     const result = await pool.query(`
@@ -10,6 +9,7 @@ export const createGame = async (req, res) => {
       (shortName, translations) 
       VALUES ($1, $2) RETURNING *`,
       [shortName, translations]);
+    console.log(result)
     res.status(201).send(result.rows[0]);
   } catch (error) {
     res.status(400).send(error);
