@@ -2,17 +2,18 @@ import pool from '../db/database.js';
 
 // Create (создать новый элемент)
 export const createGame = async (req, res) => {
+  console.log('Request Body:', req.body);
   const { shortName, translations } = req.body;
+  console.log('translations:', typeof(translations));
   try {
-    const result = await pool.query(`
-      INSERT INTO games 
-      (shortName, translations) 
-      VALUES ($1, $2) RETURNING *`,
-      [shortName, translations]);
-    console.log(result)
+    const result = await pool.query(
+      `INSERT INTO games (shortName, translations) VALUES ($1, $2::JSONB) RETURNING *`,
+      [shortName, translations]
+    );
     res.status(201).send(result.rows[0]);
   } catch (error) {
-    res.status(400).send(error);
+    console.error('Error inserting into DB:', error.message);
+    res.status(400).send({ error: error.message });
   }
 };
 
