@@ -2,6 +2,7 @@ import pool from '../db/database.js';
 
 // Create (создать новый элемент)
 export const createGame = async (req, res) => {
+  console.log(req.body)
   const { shortName, translations } = req.body;
   try {
     const result = await pool.query(`
