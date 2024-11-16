@@ -3,12 +3,12 @@ import pool from '../db/database.js';
 // Create (создать новый элемент)
 export const createGame = async (req, res) => {
   console.log('Request Body:', req.body);
-  const { shortName, translations } = req.body;
+  const { short_name, translations } = req.body;
   console.log('translations:', typeof(translations));
   try {
     const result = await pool.query(
-      `INSERT INTO games (shortName, translations) VALUES ($1, $2::JSONB) RETURNING *`,
-      [shortName, translations]
+      `INSERT INTO games (short_name, translations) VALUES ($1, $2::JSONB) RETURNING *`,
+      [short_name, translations]
     );
     res.status(201).send(result.rows[0]);
   } catch (error) {
