@@ -1,10 +1,11 @@
 import express from 'express';
-import { createAdmin, getAdmins, updateAdmin, deleteAdmin } from '../controllers/admins.js';
+import { createAdmin, getAdmins, updateAdmin, deleteAdmin, getUsers } from '../controllers/admins.js';
 
 const router = express.Router();
 
 router.post('/admins', createAdmin); // Создание нового элемента
-router.get('/admins', getAdmins); // Получение всех элементов
+router.get('/admins', getAdmins); // Получение элементов !big_admins
+router.get('/admin_users', getUsers); // Получение элементов big_admins
 router.put('/admins/:id', updateAdmin); // Обновление элемента
 router.delete('/admins/:id', deleteAdmin); // Удаление элемента
 

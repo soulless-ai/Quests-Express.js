@@ -11,13 +11,23 @@ export const createAdmin = async (req, res) => {
   }
 };
 
-// Read (получить все элементы)
+// Read (получить всех пользователей, у которых big_admin = true)
 export const getAdmins = async (req, res) => {
   try {
-    const result = await pool.query('SELECT * FROM admins');
-    res.status(200).send(result.rows);
+    const result = await pool.query('SELECT * FROM admins WHERE big_admin = true');
+    res.status(200).send(result.rows); // Отправляем массив администраторов
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send(error); // Отправляем ошибку в случае сбоя
+  }
+};
+
+// Read (получить всех пользователей, у которых big_admin = false)
+export const getUsers = async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM admins WHERE big_admin = false');
+    res.status(200).send(result.rows); // Отправляем массив пользователей
+  } catch (error) {
+    res.status(400).send(error); // Отправляем ошибку в случае сбоя
   }
 };
 
